@@ -9,7 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var multiple = 0
+    var addedMultiple = 0
+    var total = 0
 
+    @IBOutlet weak var logo: UIImageView!
+    @IBOutlet weak var playBtn: UIButton!
+    @IBOutlet weak var multipleText: UITextField!
+    
+    @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var addtoaddLbl: UILabel!
+    @IBOutlet weak var addingNumsLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,7 +31,38 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func start(sender: AnyObject) {
+       
+        if multipleText.text != nil && multipleText != ""{
+        
+        logo.hidden = true
+        playBtn.hidden = true
+        multipleText.hidden = true
+        addBtn.hidden = false
+        addtoaddLbl.hidden = false
+        addingNumsLbl.hidden = true
+        
+        multiple = Int(multipleText.text!)!
+    
+        }
+    }
 
+    @IBAction func startAdding(sender: AnyObject) {
+        
+        logo.hidden = true
+        playBtn.hidden = true
+        multipleText.hidden = true
+        addBtn.hidden = false
+        addtoaddLbl.hidden = true
+        addingNumsLbl.hidden = false
+        
+        updateMultiplier()
+    }
+    
+    func updateMultiplier() {
+        addingNumsLbl.text = "\(addedMultiple) + \(multiple) = \(total)"
+    }
 
 }
 
