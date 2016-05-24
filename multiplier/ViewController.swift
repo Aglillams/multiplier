@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     var multiple = 0
     var addedMultiple = 0
     var total = 0
+    var runTimes = 0
 
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var playBtn: UIButton!
@@ -61,7 +62,41 @@ class ViewController: UIViewController {
     }
     
     func updateMultiplier() {
-        addingNumsLbl.text = "\(addedMultiple) + \(multiple) = \(total)"
+        
+        runTimes += 1
+        
+        if runTimes <= 10 {
+            
+            total = addedMultiple + multiple
+            
+            addingNumsLbl.text = "\(addedMultiple) + \(multiple) = \(total)"
+            
+            addedMultiple = total
+            
+            
+        } else {
+            
+            restart()
+            
+        }
+        
+    }
+    
+    func restart () {
+        
+        logo.hidden = false
+        playBtn.hidden = false
+        multipleText.hidden = false
+        addBtn.hidden = true
+        addtoaddLbl.hidden = true
+        addingNumsLbl.hidden = true
+        
+        multipleText.text = ""
+        
+        multiple = 0
+        addedMultiple = 0
+        total = 0
+        runTimes = 0
     }
 
 }
